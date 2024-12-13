@@ -157,7 +157,7 @@ font-size: 4vw;
             const domain = hostnameParts.slice(0, -2).join('.'); // Pega a parte do domínio
             const extension = hostnameParts.slice(-2).join('.'); // Pega a extensão completa como .com.br
 
-            const srcValue = `clonado_${domain}.${extension}-${pathnameWithoutSlash.replace('/', '')}`;
+            const srcValue = `clonado_${domain}-${extension}-${pathnameWithoutSlash.replace('/', '')}`;
             redirectUrl.searchParams.set('src', srcValue);
             window.location.href = redirectUrl.toString();
     }, 3000);
