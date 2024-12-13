@@ -1,11 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const elements = document.querySelectorAll('.elementor-button'); // Seleciona links e botões
-
-    /**
-     * Função para verificar se o botão é uma âncora
-     * @param {string} href
-     * @returns {boolean}
-     */
+    
     function isAnchorLink(href) {
         return href.startsWith('#') || href === '';
     }
