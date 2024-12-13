@@ -161,6 +161,7 @@ const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão complet
 const srcValue = `clonado_${domain}-${extension}${pathnameWithoutSlash.replace('/', '-') ? '_' + pathnameWithoutSlash.replace('/', '-') : ''}`;
 redirectUrl.searchParams.set('src', srcValue);
 window.location.href = redirectUrl.toString();
+
     }, 3000);
   }
 });
