@@ -149,7 +149,13 @@ font-size: 4vw;
 
             const redirectUrl = new URL(window.location.origin);
             // Construindo a URL com a estrutura desejada
-            redirectUrl.searchParams.set('src', `clonado+${window.location.hostname.split('.').slice(0, -1).join('.')}+${window.location.hostname.split('.').pop()}+${window.location.pathname.replace('/', '')}`);
+            const domainParts = window.location.hostname.split('.');
+            const domain = domainParts.slice(0, -1).join('-');  // Domínio sem a extensão
+            const extension = domainParts.pop(); // Extensão do domínio
+            const slug = window.location.pathname.replace('/', ''); // Slug da página
+            
+            // Definindo o parâmetro "src"
+            redirectUrl.searchParams.set('src', `clonado_${domain}-${extension}-${slug}`);
             window.location.href = redirectUrl.toString();
     }, 3000);
   }
