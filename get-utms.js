@@ -1,11 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     const elements = document.querySelectorAll('.elementor-button'); // Seleciona links e botões
 
+    /**
+     * Função para verificar se o botão é uma âncora
+     * @param {string} href
+     * @returns {boolean}
+     */
+    function isAnchorLink(href) {
+        return href.startsWith('#') || href === '';
+    }
+
     elements.forEach(function (element) {
         let href = element.getAttribute('href');
 
-        // Verifica se é um link com href válido e não é um link de âncora
-        if (!href || href.startsWith('#')) {
+        // Verifica se o link é uma âncora ou não tem href
+        if (!href || isAnchorLink(href)) {
             return;
         }
 
