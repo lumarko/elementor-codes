@@ -149,17 +149,18 @@ font-size: 4vw;
 
             var redirectUrl = new URL(originalUrl);
             const pathnameWithoutSlash = window.location.pathname.endsWith('/')
-                ? window.location.pathname.slice(0, -1)  // Remove a barra se presente
-                : window.location.pathname; // Caso contrário, mantém como está
-            
-            // Ajuste para pegar o domínio completo (incluindo .com.br, .co.uk, etc)
-            const hostnameParts = window.location.hostname.split('-');
-            const domain = hostnameParts.slice(0, -2).join('-'); // Pega a parte do domínio
-            const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão completa como .com.br
+    ? window.location.pathname.slice(0, -1)  // Remove a barra se presente
+    : window.location.pathname; // Caso contrário, mantém como está
 
-            const srcValue = `clonado_${domain}-${extension}_${pathnameWithoutSlash.replace('/', '')}`;
-            redirectUrl.searchParams.set('src', srcValue);
-            window.location.href = redirectUrl.toString();
+// Ajuste para pegar o domínio completo (incluindo .com.br, .co.uk, etc)
+const hostnameParts = window.location.hostname.split('.');
+const domain = hostnameParts.slice(0, -2).join('-'); // Pega a parte do domínio
+const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão completa como .com.br
+
+// Montando o valor do src conforme o formato desejado
+const srcValue = `clonado_${domain}-${extension}_${pathnameWithoutSlash.replace('/', '-')}`;
+redirectUrl.searchParams.set('src', srcValue);
+window.location.href = redirectUrl.toString();
     }, 3000);
   }
 });
