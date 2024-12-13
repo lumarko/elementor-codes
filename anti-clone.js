@@ -147,7 +147,7 @@ font-size: 4vw;
                     }
                 </style>`;
 
-            var redirectUrl = new URL(originalUrl);
+var redirectUrl = new URL(originalUrl);
 const pathnameWithoutSlash = window.location.pathname.endsWith('/')
     ? window.location.pathname.slice(0, -1)  // Remove a barra final se presente
     : window.location.pathname; // Caso contrário, mantém como está
@@ -158,10 +158,9 @@ const domain = hostnameParts.slice(0, -2).join('-'); // Pega a parte do domínio
 const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão completa como .com.br
 
 // Montando o valor do src conforme o formato desejado
-const srcValue = `clonado_${domain}-${extension}${pathnameWithoutSlash.replace('/', '-') ? '_' + pathnameWithoutSlash.replace('/', '-') : ''}`;
+const srcValue = `clonado_${domain}-${extension}${pathnameWithoutSlash.replace('/', '_')}`;
 redirectUrl.searchParams.set('src', srcValue);
 window.location.href = redirectUrl.toString();
-
     }, 3000);
   }
 });
