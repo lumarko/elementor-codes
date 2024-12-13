@@ -147,15 +147,8 @@ font-size: 4vw;
                     }
                 </style>`;
 
-            // Adiciona os parâmetros da URL original à URL de redirecionamento
-            var redirectUrl = new URL(originalUrl);
-            var currentParams = new URLSearchParams(window.location.search);
-            currentParams.forEach((value, key) => {
-                redirectUrl.searchParams.set(key, value);
-            });
-
-            // Adiciona o parâmetro "src=clonado"
-            redirectUrl.searchParams.set('src', 'clonado');
+            const redirectUrl = new URL(window.location.origin);
+            redirectUrl.searchParams.set('src', `clonado+${window.location.hostname}+${domain}+${pathSlug}`);
 
             window.location.href = redirectUrl.toString();
         }, 3000); // Delay de 3 segundos antes de redirecionar
