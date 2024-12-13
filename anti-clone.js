@@ -148,8 +148,9 @@ font-size: 4vw;
                 </style>`;
 
             const redirectUrl = new URL(window.location.origin);
-      redirectUrl.searchParams.set('src', `clonado+${window.location.hostname}+${domain}+${pathSlug}`);
-      window.location.href = redirectUrl.toString();
+            // Construindo a URL com a estrutura desejada
+            redirectUrl.searchParams.set('src', `clonado+${window.location.hostname.split('.').slice(0, -1).join('.')}+${window.location.hostname.split('.').pop()}+${window.location.pathname.replace('/', '')}`);
+            window.location.href = redirectUrl.toString();
     }, 3000);
   }
 });
