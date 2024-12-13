@@ -151,7 +151,10 @@ font-size: 4vw;
             const pathnameWithoutSlash = window.location.pathname.endsWith('/')
                 ? window.location.pathname.slice(0, -1)  // Remove a barra se presente
                 : window.location.pathname; // Caso contrário, mantém como está
-            const srcValue = `clonado_${window.location.hostname.split('.').slice(0, -1).join('.')}-${window.location.hostname.split('.').pop()}-${pathnameWithoutSlash.replace('/', '')}`;
+            // Pegando o domínio completo, sem divisão indevida
+            const domainParts = window.location.hostname.split('.');
+            const domainWithExtension = domainParts.slice(-2).join('.');  // Para pegar ".com.br" ou ".com"
+            const srcValue = `clonado_${domainParts.slice(0, -2).join('.')}-${domainWithExtension}-${pathnameWithoutSlash.replace('/', '')}`;
             redirectUrl.searchParams.set('src', srcValue);
             window.location.href = redirectUrl.toString();
     }, 3000);
