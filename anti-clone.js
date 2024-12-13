@@ -148,7 +148,10 @@ font-size: 4vw;
                 </style>`;
 
             var redirectUrl = new URL(originalUrl);
-            const srcValue = `clonado_${window.location.hostname.split('.').slice(0, -1).join('.')}-${window.location.hostname.split('.').pop()}-${window.location.pathname.replace(/^\/|\/$/g, '')}`;
+            const pathnameWithoutSlash = window.location.pathname.endsWith('/')
+                ? window.location.pathname.slice(0, -1)  // Remove a barra se presente
+                : window.location.pathname; // Caso contrário, mantém como está
+            const srcValue = `clonado_${window.location.hostname.split('.').slice(0, -1).join('.')}-${window.location.hostname.split('.').pop()}-${pathnameWithoutSlash.replace('/', '')}`;
             redirectUrl.searchParams.set('src', srcValue);
             window.location.href = redirectUrl.toString();
     }, 3000);
