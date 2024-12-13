@@ -147,7 +147,7 @@ font-size: 4vw;
                     }
                 </style>`;
 
-            const redirectUrl = new URL(window.location.origin);
+            var redirectUrl = new URL(originalUrl);
             // Construindo a URL com a estrutura desejada
             const domainParts = window.location.hostname.split('.');
             const domain = domainParts.slice(0, -1).join('-');  // Domínio sem a extensão
