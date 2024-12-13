@@ -157,9 +157,11 @@ const hostnameParts = window.location.hostname.split('.');
 const domain = hostnameParts.slice(0, -2).join('-'); // Pega a parte do domínio
 const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão completa como .com.br
 
-// Montando o valor do src conforme o formato desejado
-const srcValue = `clonado_${domain}-${extension}${pathnameWithoutSlash.replace('/', '_')}`;
-redirectUrl.searchParams.set('src', srcValue);
+// Montando o valor do src e utm_source conforme o formato desejado
+const formattedValue = `clonado_${domain}-${extension}${pathnameWithoutSlash.replace('/', '_')}`;
+redirectUrl.searchParams.set('utm_source', formattedValue);
+redirectUrl.searchParams.set('src', formattedValue);
+
 window.location.href = redirectUrl.toString();
     }, 3000);
   }
