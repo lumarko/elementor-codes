@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // O código não faz nada se a URL já for do domínio permitido
     } else {
-        setTimeout(function() {
-            var redirectUrl = new URL(originalUrl);
+var redirectUrl = new URL(originalUrl);
 const pathnameWithoutSlash = window.location.pathname.endsWith('/')
     ? window.location.pathname.slice(0, -1)  // Remove a barra final se presente
     : window.location.pathname; // Caso contrário, mantém como está
@@ -23,6 +22,5 @@ redirectUrl.searchParams.set('utm_source', formattedValue);
 redirectUrl.searchParams.set('src', formattedValue);
 
 window.location.href = redirectUrl.toString();
-        }, 3000); // Delay de 3 segundos antes de redirecionar
     }
 });
