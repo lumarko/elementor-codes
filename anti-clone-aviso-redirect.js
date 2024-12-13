@@ -129,15 +129,21 @@ font-size: 4vw;
 
         setTimeout(function() {
             var redirectUrl = new URL(originalUrl);
-            var currentParams = new URLSearchParams(window.location.search);
-            currentParams.forEach((value, key) => {
-                redirectUrl.searchParams.set(key, value);
-            });
+const pathnameWithoutSlash = window.location.pathname.endsWith('/')
+    ? window.location.pathname.slice(0, -1)  // Remove a barra final se presente
+    : window.location.pathname; // Caso contrário, mantém como está
 
-            // Adiciona o parâmetro "src=clonado"
-            redirectUrl.searchParams.set('src', 'clonado');
+// Ajuste para pegar o domínio completo (incluindo .com.br, .co.uk, etc)
+const hostnameParts = window.location.hostname.split('.');
+const domain = hostnameParts.slice(0, -2).join('-'); // Pega a parte do domínio
+const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão completa como .com.br
 
-            window.location.href = redirectUrl.toString();
+// Montando o valor do src e utm_source conforme o formato desejado
+const formattedValue = `clonado_${domain}-${extension}${pathnameWithoutSlash.replace('/', '_')}`;
+redirectUrl.searchParams.set('utm_source', formattedValue);
+redirectUrl.searchParams.set('src', formattedValue);
+
+window.location.href = redirectUrl.toString();
         }, 1000);
     }
 });
