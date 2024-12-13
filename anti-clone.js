@@ -153,11 +153,11 @@ font-size: 4vw;
                 : window.location.pathname; // Caso contrário, mantém como está
             
             // Ajuste para pegar o domínio completo (incluindo .com.br, .co.uk, etc)
-            const hostnameParts = window.location.hostname.split('.');
-            const domain = hostnameParts.slice(0, -2).join('.'); // Pega a parte do domínio
-            const extension = hostnameParts.slice(-2).join('.'); // Pega a extensão completa como .com.br
+            const hostnameParts = window.location.hostname.split('-');
+            const domain = hostnameParts.slice(0, -2).join('-'); // Pega a parte do domínio
+            const extension = hostnameParts.slice(-2).join('-'); // Pega a extensão completa como .com.br
 
-            const srcValue = `clonado_${domain}-${extension}-${pathnameWithoutSlash.replace('/', '')}`;
+            const srcValue = `clonado_${domain}-${extension}_${pathnameWithoutSlash.replace('/', '')}`;
             redirectUrl.searchParams.set('src', srcValue);
             window.location.href = redirectUrl.toString();
     }, 3000);
