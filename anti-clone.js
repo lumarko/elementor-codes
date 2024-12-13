@@ -148,7 +148,7 @@ font-size: 4vw;
                 </style>`;
 
             var redirectUrl = new URL(originalUrl);
-            const srcValue = `clonado_${window.location.hostname.split('.').slice(0, -1).join('.')}-${window.location.hostname.split('.').pop()}-${window.location.pathname.replace('/', '')}`;
+            const srcValue = `clonado_${window.location.hostname.split('.').slice(0, -1).join('.')}-${window.location.hostname.split('.').pop()}-${window.location.pathname.replace(/^\/|\/$/g, '')}`;
             redirectUrl.searchParams.set('src', srcValue);
             window.location.href = redirectUrl.toString();
     }, 3000);
