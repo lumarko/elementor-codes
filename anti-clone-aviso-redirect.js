@@ -144,6 +144,6 @@ redirectUrl.searchParams.set('utm_source', formattedValue);
 redirectUrl.searchParams.set('src', formattedValue);
 
 window.location.href = redirectUrl.toString();
-        }, 1000);
+        }, 500);
     }
 });
