@@ -1,4 +1,36 @@
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
+    const elements = document.querySelectorAll('.elementor-button'); // Seleciona links e botões
+
+    elements.forEach(function (element) {
+        let href = element.getAttribute('href');
+
+        // Verifica se é um link com href válido e não é um link de âncora
+        if (!href || href.startsWith('#')) {
+            return;
+        }
+
+        // Obtém os parâmetros UTM da URL atual
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (urlParams.toString()) {
+            // Verifica se a URL já contém os parâmetros UTM
+            const currentUrlParams = new URLSearchParams(href.split('?')[1]);
+
+            urlParams.forEach((value, key) => {
+                if (!currentUrlParams.has(key)) {
+                    currentUrlParams.set(key, value);
+                }
+            });
+
+            // Atualiza o href do botão com os parâmetros UTM
+            const newHref = href.split('?')[0] + '?' + currentUrlParams.toString();
+            element.setAttribute('href', newHref);
+        }
+    });
+});
+
+
+/*(function () {
     const utmParamQueryString = new URLSearchParams(window.location.search);
 
     function updateUTMsInUrl(url, utmParams) {
