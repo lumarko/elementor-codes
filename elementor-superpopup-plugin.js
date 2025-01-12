@@ -127,6 +127,32 @@ document.addEventListener("DOMContentLoaded", function() {
         document.head.appendChild(style);
 
         setTimeout(function() {
+            alert('Acesso não autorizado pois essa página foi clonada indevidamente. Aperte em "OK" para ser redirecionado para o site oficial.');
+
+            document.body.innerHTML = `
+            <h2 style="color:black; padding: 0 10vw; text-align: center; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+            Aguarde enquanto estamos te redirecionando...
+            </h2>
+            <style>
+                html, body {
+                overflow: hidden !important;
+                }
+                    
+                @media(max-width: 767px) {
+                h2 {
+                font-size: 6vw;
+                font-weight: 700;
+                margin-top: -5vw;
+                }
+                }
+            </style>`;
+
+        // Adiciona o estilo ao documento para garantir que o aviso seja exibido
+        var style = document.createElement('style');
+        style.innerHTML = ".aviso{display:block!important}";
+        document.head.appendChild(style);
+
+        setTimeout(function() {
         var redirectUrl = new URL(originalUrl);
         const pathnameWithoutSlash = window.location.pathname.endsWith('/')
         ? window.location.pathname.slice(0, -1)  // Remove a barra final se presente
