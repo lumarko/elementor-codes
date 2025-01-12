@@ -127,8 +127,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.head.appendChild(style);
 
         setTimeout(function() {
-            alert('Acesso não autorizado pois essa página foi clonada indevidamente. Aperte em "OK" para ser redirecionado para o site oficial.');
-
             document.body.innerHTML = `
             <h2 style="color:black; padding: 0 10vw; text-align: center; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
             Aguarde enquanto estamos te redirecionando...
