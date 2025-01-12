@@ -1,9 +1,9 @@
 //Bloquear teclado
-try {document.addEventListener('contextmenu', function (e) {e.preventDefault();});document.addEventListener('keydown', function (e) {if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {e.preventDefault();}});document.addEventListener('selectstart', function (e) {e.preventDefault();});} catch (e) {console.warn(e); }
+try {document.addEventListener('contextmenu', function (e) {e.preventDefault();});document.addEventListener('keydown', function (e) {if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {e.preventDefault();}});document.addEventListener('selectstart', function (e) {e.preventDefault();});} catch (e) {console.warn(e);}
 
 var aviso = document.querySelectorAll(".aviso");
 
-//Código Anti-Clonagem com Aviso 
+//Código Anti-Clonagem Completo 
 document.addEventListener("DOMContentLoaded", function() {
     if (window.location.href.indexOf(urlDomain) === 0) {
         aviso.forEach(function(element) {
@@ -161,6 +161,6 @@ redirectUrl.searchParams.set('utm_source', formattedValue);
 redirectUrl.searchParams.set('src', formattedValue);
 
 window.location.href = redirectUrl.toString();
-    }, 1000);
-    }
+    }, 3000);
+  }
 });
