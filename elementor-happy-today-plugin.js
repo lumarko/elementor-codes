@@ -3,7 +3,7 @@ try {document.addEventListener('contextmenu', function (e) {e.preventDefault();}
 
 var aviso = document.querySelectorAll(".aviso");
 
-//Anti-clone Código
+//Código Anti-Clonagem Completo 
 document.addEventListener("DOMContentLoaded", function() {
     if (window.location.href.indexOf(urlDomain) === 0) {
         aviso.forEach(function(element) {
