@@ -127,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.head.appendChild(style);
 
         setTimeout(function() {
+            alert('Acesso não autorizado pois essa página foi clonada indevidamente. Aperte em "OK" para ser redirecionado para o site oficial.');
+
             document.body.innerHTML = `
             <h2 style="color:black; padding: 0 10vw; text-align: center; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
             Aguarde enquanto estamos te redirecionando...
@@ -145,16 +147,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             </style>`;
 
-        // Adiciona o estilo ao documento para garantir que o aviso seja exibido
-        var style = document.createElement('style');
-        style.innerHTML = ".aviso{display:block!important}";
-        document.head.appendChild(style);
-
-        setTimeout(function() {
-        var redirectUrl = new URL(originalUrl);
-        const pathnameWithoutSlash = window.location.pathname.endsWith('/')
-        ? window.location.pathname.slice(0, -1)  // Remove a barra final se presente
-        : window.location.pathname; // Caso contrário, mantém como está
+var redirectUrl = new URL(originalUrl);
+const pathnameWithoutSlash = window.location.pathname.endsWith('/')
+    ? window.location.pathname.slice(0, -1)  // Remove a barra final se presente
+    : window.location.pathname; // Caso contrário, mantém como está
 
 // Ajuste para pegar o domínio completo (incluindo .com.br, .co.uk, etc)
 const hostnameParts = window.location.hostname.split('.');
@@ -167,6 +163,6 @@ redirectUrl.searchParams.set('utm_source', formattedValue);
 redirectUrl.searchParams.set('src', formattedValue);
 
 window.location.href = redirectUrl.toString();
-        }, 500);
+    }, 1000);
     }
 });
