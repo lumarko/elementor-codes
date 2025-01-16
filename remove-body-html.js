@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se o domínio estiver correto, não faz nada
     } else {
-        // Remove o conteúdo do body
-        limparBody();
+        setTimeout(function () {
+            limparBody();
+        }, 1000);
     }
 });
