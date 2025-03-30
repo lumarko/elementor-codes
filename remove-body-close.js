@@ -1,24 +1,5 @@
-// Bloquear teclado e ações de inspeção
-try {
-    document.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-    });
-
-    document.addEventListener('keydown', function (e) {
-        if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === 'I')
-        ) {
-            e.preventDefault();
-        }
-    });
-
-    document.addEventListener('selectstart', function (e) {
-        e.preventDefault();
-    });
-} catch (e) {
-    console.warn(e);
-}
+//Bloquear teclado
+try {document.addEventListener('contextmenu', function (e) {e.preventDefault();});document.addEventListener('keydown', function (e) {if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {e.preventDefault();}});document.addEventListener('selectstart', function (e) {e.preventDefault();});} catch (e) {console.warn(e);}
 
 // Função para limpar o conteúdo do body
 function limparBody() {
@@ -32,9 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     limparBody();
+
+    setTimeout(function () {
         window.close();
+
         // Caso o navegador bloqueie o fechamento
         setTimeout(function () {
             window.location.replace('about:blank');
-        }, 500);
+        }, 100); // pequeno intervalo de fallback
+    }, 200); // reduzido de 1000ms para 200ms
 });
