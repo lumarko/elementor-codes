@@ -32,13 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     limparBody();
-
-    setTimeout(function () {
         window.close();
-
         // Caso o navegador bloqueie o fechamento
         setTimeout(function () {
             window.location.replace('about:blank');
         }, 500);
-    }, 1000);
 });
