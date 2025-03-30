@@ -28,15 +28,17 @@ function limparBody() {
 // Código Anti-Clonagem Completo
 document.addEventListener('DOMContentLoaded', function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
-        // Domínio autorizado: nenhuma ação
         return;
     }
 
-    // Remove o conteúdo do body
     limparBody();
 
-    // Após 1 segundo, fecha a aba/janela
     setTimeout(function () {
         window.close();
+
+        // Caso o navegador bloqueie o fechamento
+        setTimeout(function () {
+            window.location.replace('about:blank');
+        }, 500);
     }, 1000);
 });
