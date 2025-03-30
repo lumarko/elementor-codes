@@ -17,6 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Após 1 segundo, redireciona para a URL original
         setTimeout(function () {
             close();
-        }, 1000);
+        }, 000);
     }
 });
