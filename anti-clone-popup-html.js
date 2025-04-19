@@ -97,6 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         setTimeout(function () {
             limparBody();
-        }, 1000); // Espera 1 segundo antes de limpar e recriar o conteúdo
+        }, 100); // Espera 1 segundo antes de limpar e recriar o conteúdo
     }
 });
