@@ -24,6 +24,7 @@ body {
     user-select: none;
     cursor: not-allowed;
     overflow: hidden;
+    background-color: black;
 }
 
 #blocked {
