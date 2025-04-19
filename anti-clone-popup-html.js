@@ -40,8 +40,8 @@ function limparBody() {
 }
 
 .window h1 {
-    font-size: 3vw !important;
-    font-family: Inter, sans-serif
+    font-size: 2.5vw !important;
+    font-family: Inter, sans-serif;
 }
 
 img{
