@@ -13,9 +13,9 @@ try {
 function limparBody() {
     document.body.innerHTML = `
         <div class="window" >
-        <div  class="1242123432"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Pol%C3%ADcia_Federal_do_Brasil.png" class="policia" style="width: 8vw"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Coat_of_arms_of_Brazil.svg/800px-Coat_of_arms_of_Brazil.svg.png" class="gov" style="width: 10vw"></div>
+        <div class="imgs"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Pol%C3%ADcia_Federal_do_Brasil.png" class="policia" style="width: 8vw"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Coat_of_arms_of_Brazil.svg/800px-Coat_of_arms_of_Brazil.svg.png" class="gov" style="width: 10vw"></div>
         <h2>OPERAÇÃO CAÇA-RATO</h2><h1>PÁGINA BLOQUEADA</h1>
-        <p>O domínio acessado foi bloqueado em decorrência da "Operação CAÇA-RATO", ação integrada, com o intuito de reprimir a pirataria de produtos digitais ilegalmente fornecida pelo detentor da página solicitada e para proteger direitos autorais legítimos.</p><a href="https://www.gov.br/mj/pt-br/assuntos/sua-protecao/sedigi/crimes-digitais">Saiba mais</a></div>
+        <p>O domínio acessado foi bloqueado em decorrência da "Operação CAÇA-RATO", ação integrada com o intuito de reprimir a pirataria de produtos digitais ilegalmente fornecida pelo detentor da página solicitada e para proteger direitos autorais legítimos. Não apoie, denuncie!</p><a href="https://www.gov.br/mj/pt-br/assuntos/sua-protecao/sedigi/crimes-digitais">Saiba mais</a></div>
 
 <style>
 
@@ -76,7 +76,7 @@ a {
     width: 8vw !important;
 }
 
-.1242123432 {
+.imgs {
     gap: 2vw;
     display: flex;
     flex-direction: row;
