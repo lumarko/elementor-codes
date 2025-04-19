@@ -122,7 +122,7 @@ function limparBody() {
                 background: red;
                 color: white;
                 font-family: monospace;
-                font-size: 16px;
+                font-size: 24px;
                 padding: 10px;
                 white-space: pre-wrap;
                 overflow-wrap: break-word;
