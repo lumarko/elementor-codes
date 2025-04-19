@@ -26,7 +26,7 @@ function criarPopup() {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: white;
+                background: black;
                 font-family: Arial, sans-serif;
                 overflow: hidden;
                 user-select: none !important;
@@ -98,7 +98,7 @@ function criarPopup() {
                 overflow-y: visible !important;
             }
         </style>
-        <div id="corrupt-screen" ></div>
+        <div id="corrupt-screen">VOCÊ FOI HACKEADO...</div>
     `;
 
     obterCidade();
