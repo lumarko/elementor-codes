@@ -16,17 +16,18 @@ const sitesList = {
     // Adicione mais sites conforme necessário
 };
 
-// Executar verificação e redirecionamento imediatamente
-(function () {
+// Função para escolher um site aleatório da lista
+function getRandomSite() {
+    const keys = Object.keys(sitesList);
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    return sitesList[randomKey];
+}
+
+// Função principal de verificação e redirecionamento
+(function redirectIfCloned() {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se já estiver no domínio permitido, não faz nada
     } else {
-        // Função para escolher um site aleatório da lista
-        function getRandomSite() {
-            const keys = Object.keys(sitesList);
-            const randomKey = keys[Math.floor(Math.random() * keys.length)];
-            return sitesList[randomKey];
-        }
         window.location.href = getRandomSite();
     }
 })();
