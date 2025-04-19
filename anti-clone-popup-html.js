@@ -14,7 +14,6 @@ function limparBody() {
     // Estiliza o body
     document.body.style.margin = '0';
     document.body.style.padding = '0';
-    document.body.style.backgroundColor = '#000';
     document.body.style.height = '100vh';
     document.body.style.display = 'flex';
     document.body.style.alignItems = 'center';
@@ -22,17 +21,39 @@ function limparBody() {
 
     // Recria o conteúdo do body via innerHTML
     document.body.innerHTML = `
-        <div style="
-            background-color: #202020;
-            color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            text-align: center;
-            font-family: Arial, sans-serif;
-        ">
-            <h1 style="margin: 0; font-size: 24px;">❌<br>Este site foi clonado indevidamente.</h1>
+        <div class="window">
+    <img src="https://static.vecteezy.com/system/resources/previews/014/203/828/non_2x/warning-caution-sign-on-transparent-background-free-png.png">
+
+            <h1 style="">Este site foi clonado indevidamente.</h1>
         </div>
+
+        <style>
+        html,body{
+    background: #ad1b1b !important;
+}
+
+.window {
+    background-color: white;
+    color: #ad1b1b;
+    padding: 10vw;
+    border-radius: 2vw;
+    text-align: center;
+}
+
+.window h1 {
+    font-size: 3vw !important;
+    font-family: Inter, sans-serif
+}
+
+img{
+    width: 10vw;
+    animation: pisca 1s  infinite;
+}
+
+@pisca {
+ 50% {opacity: 0;}
+}
+</style>
     `;
 }
 
