@@ -9,145 +9,50 @@ try {
     console.warn(e);
 }
 
-// Função para substituir o body pelo novo popup
-function criarPopup() {
+// Função para limpar o conteúdo do body e adicionar o popup customizado
+function limparBody() {
     document.body.innerHTML = `
-        <div class="popup" >
-            <h1 class="popup-title">VOCÊ É DE <span id="cidade"></span>? ESSES NOVINHOS ESTÃO LOUCOS PARA FUDER GOSTOSO E ESTÃO A APENAS 3KM DE VOCÊ 😈</h1>
-            <img src="https://www.kinguys.com/wp-content/uploads/2019/04/propaganda-3.jpg">
-            <h1 class="button">QUER VER FOTO DA MINHA ROLA GROSSA E VEIUDA? CLIQUE AQUI PARA ME CHAMAR NO ZAP</h1>
+        <div class="window">
+            <img src="https://static.vecteezy.com/system/resources/previews/014/203/828/non_2x/warning-caution-sign-on-transparent-background-free-png.png" alt="Alerta">
+            <h1>Este site foi clonado indevidamente.</h1>
         </div>
 
         <style>
             html, body {
+                background: #ad1b1b !important;
                 margin: 0;
-                padding: 15vw;
-                height: 100vh;
+                padding: 0;
+                height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: black;
-                font-family: Arial, sans-serif;
-                overflow: hidden;
-                user-select: none !important;
             }
 
-            .popup {
-                width: 50vw;
-                padding: 0;
-                border-radius: 0;
-                display: flex;
+            .window {
+                background-color: white;
+                color: #ad1b1b;
+                padding: 10vw;
+                border-radius: 2vw;
                 text-align: center;
-                z-index: 1;
-                flex-direction: column;
-                align-content: space-between;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: nowrap;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                cursor: pointer;
+                box-shadow: 0 0 20px rgba(0,0,0,0.5);
             }
 
-            .popup:hover {
-                transform: scale(1.02);
-                box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            .window h1 {
+                font-size: 2.5vw !important;
+                font-family: Inter, sans-serif;
+                margin: 2vw 0 0 0;
             }
 
-            .popup-title, .button {
-                padding: 1vw 3vw;
-                width: 100% !important;
+            .window img {
+                width: 10vw;
+                animation: pisca 1s infinite;
             }
 
-            h1, h2, h3, h4, h5, h6 {
-                margin-block-start: 0;
-                margin-block-end: 0;
-                font-family: inherit;
-                font-weight: 500;
-                line-height: 1.2;
-                color: #ffffff;
-                width: 100vw !important;
-                background: red;
-            }
-
-            h1 {
-                font-size: 1.7vw;
-                font-weight: 700 !important;
-            }
-
-            h1.button {
-                background: yellow;
-                color: black;
-            }
-
-            /* Estilo para o efeito de "corromper" */
-            #corrupt-screen {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: red;
-                color: white;
-                font-family: monospace;
-                font-size: 24px;
-                padding: 10px;
-                white-space: pre-wrap;
-                overflow-wrap: break-word;
-                z-index: 9999;
-                display: none;
-                overflow-y: visible !important;
+            @keyframes pisca {
+                50% { opacity: 0; }
             }
         </style>
-        <div id="corrupt-screen">VOCÊ FOI HACKEADO...</div>
     `;
-
-    obterCidade();
-    ativarEventos();
-}
-
-// Função para obter a cidade via IP sem pedir permissão
-function obterCidade() {
-    fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-            if (data && data.city) {
-                document.getElementById('cidade').textContent = data.city.toUpperCase();
-            }
-        })
-        .catch(error => {
-            console.warn('Erro ao obter a cidade via IP:', error);
-        });
-}
-
-// Função para iniciar o corruption screen
-function iniciarCorrupcao() {
-    const tela = document.getElementById('corrupt-screen');
-    if (tela.style.display !== 'block') {
-        tela.style.display = 'block';
-        let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:",.<>?/\\';
-        setInterval(() => {
-            const randomChar = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-            tela.textContent += randomChar;
-            if (tela.textContent.length > 10000) {
-                tela.textContent = '';
-            }
-        }, 1);
-    }
-}
-
-// Função para ativar os eventos de clique e tempo
-function ativarEventos() {
-    const popup = document.querySelector('.popup');
-
-    // Começar corrupção se clicar no popup
-    popup.addEventListener('click', function () {
-        iniciarCorrupcao();
-    });
-
-    // Ou começar corrupção após 15 segundos parado
-    setTimeout(function () {
-        iniciarCorrupcao();
-    }, 15000);
 }
 
 // Código Anti-Clonagem Completo
@@ -156,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Se o domínio estiver correto, não faz nada
     } else {
         setTimeout(function () {
-            criarPopup();
-        }, 3000); // Espera 3 segundos para aplicar
+            limparBody();
+        }, 1000); // Espera 1 segundo antes de limpar e recriar o conteúdo
     }
 });
