@@ -16,8 +16,7 @@ const sitesList = {
     // Adicione mais sites conforme necessário
 };
 
-// Código Anti-Clonagem com Redirecionamento Automático
-document.addEventListener("DOMContentLoaded", function () {
+function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se já estiver no domínio permitido, não faz nada
     } else {
@@ -27,8 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const randomKey = keys[Math.floor(Math.random() * keys.length)];
             return sitesList[randomKey];
         }
-
-        // Redirecionar para o site aleatório
         window.location.href = getRandomSite();
     }
 });
