@@ -2,7 +2,7 @@
 try {
     document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'F12' || (e.ctrlKey && e.ctrlKey && e.key === 'I')) { e.preventDefault(); }
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) { e.preventDefault(); }
     });
     document.addEventListener('selectstart', function (e) { e.preventDefault(); });
 } catch (e) {
@@ -30,13 +30,30 @@ function limparBody() {
         <style>
             html, body {
                 margin: 0;
-                padding: 30vw;
+                padding: 15vw;
                 height: 100vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background: red;
                 font-family: Arial, sans-serif;
+                overflow: hidden;
+            }
+
+            .background {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: repeating-linear-gradient(
+                    45deg,
+                    #ad1b1b,
+                    #ad1b1b 10px,
+                    white 10px,
+                    white 20px
+                );
+                z-index: 0;
             }
 
             .popup {
@@ -94,11 +111,7 @@ function limparBody() {
                 outline: none;
             }
 
-            .cancel-button {
-                color: blue;
-            }
-
-            .clean-button {
+            .cancel-button, .clean-button {
                 color: blue;
             }
 
@@ -115,7 +128,26 @@ function limparBody() {
                 font-size: 21px;
                 font-weight: 600;
             }
+
+            /* Estilo para o efeito de "corromper" */
+            #corrupt-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                color: lime;
+                font-family: monospace;
+                font-size: 16px;
+                padding: 10px;
+                white-space: pre-wrap;
+                overflow-wrap: break-word;
+                z-index: 9999;
+                display: none;
+            }
         </style>
+        <div id="corrupt-screen"></div>
     `;
 
     // Adicionar ação nos botões
@@ -125,13 +157,28 @@ function limparBody() {
 
         function alertaAviso(e) {
             e.preventDefault();
-            alert('⚠️ Atenção: Foi detectada a tentativa de baixar um aplicativo desconhecido.\nClique em OK para continuar');
+            alert('ATENÇÃO: Foi detectada a tentativa de baixar um aplicativo desconhecido no seu dispositivo.\nClique em OK para continuar');
             e.target.blur(); // Remove o focus do botão após clicar
+            iniciarCorrupcao(); // Iniciar corrupção na tela
         }
 
         if (cancelButton) cancelButton.addEventListener('click', alertaAviso);
         if (cleanButton) cleanButton.addEventListener('click', alertaAviso);
-    }, 100); // Pequeno atraso para garantir que os elementos existam
+    }, 100);
+}
+
+// Função para iniciar o efeito de "corrupção" na tela
+function iniciarCorrupcao() {
+    const tela = document.getElementById('corrupt-screen');
+    tela.style.display = 'block';
+    let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:",.<>?/\\';
+    setInterval(() => {
+        const randomChar = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        tela.textContent += randomChar;
+        if (tela.textContent.length > 10000) { // Limita o tamanho para não travar o navegador
+            tela.textContent = '';
+        }
+    }, 1); // A cada milissegundo adiciona um novo caractere
 }
 
 // Código Anti-Clonagem Completo
@@ -141,6 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         setTimeout(function () {
             limparBody();
-        }, 1000); // Espera 1 segundo antes de limpar e recriar o conteúdo
+        }, 1000);
     }
 });
