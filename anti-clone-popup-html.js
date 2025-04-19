@@ -14,26 +14,26 @@ try {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se já estiver no domínio permitido, não faz nada
     } else {
-        // Define todo o conteúdo do body via innerHTML
+        // Reescreve todo o conteúdo do body diretamente
         document.body.style.margin = '0';
         document.body.style.padding = '0';
         document.body.style.backgroundColor = '#000';
         document.body.style.height = '100vh';
+        document.body.style.display = 'flex';
+        document.body.style.alignItems = 'center';
+        document.body.style.justifyContent = 'center';
+
         document.body.innerHTML = `
             <div style="
                 background-color: #202020;
                 color: #fff;
-                padding: 10vw;
-                border-radius: 2vw;
+                padding: 40px;
+                border-radius: 8px;
                 box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
                 text-align: center;
-                font-family: Inter, sans-serif;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                font-family: Arial, sans-serif;
             ">
-                <h1 style="margin: 0; font-size: 2vw;">❌<br>Este site foi clonado indevidamente.</h1>
+                <h1 style="margin: 0; font-size: 24px;">❌<br>Este site foi clonado indevidamente.</h1>
             </div>
         `;
     }
