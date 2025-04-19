@@ -90,13 +90,11 @@ a {
     `;
 }
 
-// Código Anti-Clonagem Completo
-document.addEventListener("DOMContentLoaded", function () {
+// Código Anti-Clonagem com Redirecionamento Automático
+(function redirectIfCloned() {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se o domínio estiver correto, não faz nada
     } else {
-        setTimeout(function () {
             limparBody();
-        }, 1000); // Espera 1 segundo antes de limpar e recriar o conteúdo
     }
-});
+})();
