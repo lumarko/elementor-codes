@@ -9,10 +9,10 @@ try {
 
 // Lista de sites para redirecionamento aleatório
 const sitesList = {
-    "site-1": "https://site1.com",
-    "site-2": "https://site2.com",
-    "site-3": "https://site3.com",
-    "site-4": "https://site4.com"
+    "site-1": "https://google.com",
+    "site-2": "https://youtube.com",
+    "site-3": "https://x.com",
+    "site-4": "https://instagram.com"
     // Adicione mais sites conforme necessário
 };
 
