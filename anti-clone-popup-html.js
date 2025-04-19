@@ -12,7 +12,6 @@ try {
 // Função para limpar o conteúdo do body e adicionar o popup customizado
 function limparBody() {
     document.body.innerHTML = `
-        <div class="background"></div>
         <div class="popup">
             <div class="popup-header">
                 <h1 class="popup-title">⚠️ AVISO</h1>
@@ -38,22 +37,6 @@ function limparBody() {
                 background: red;
                 font-family: Arial, sans-serif;
                 overflow: hidden;
-            }
-
-            .background {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: repeating-linear-gradient(
-                    45deg,
-                    #ad1b1b,
-                    #ad1b1b 10px,
-                    white 10px,
-                    white 20px
-                );
-                z-index: 0;
             }
 
             .popup {
@@ -136,8 +119,8 @@ function limparBody() {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: black;
-                color: lime;
+                background: red;
+                color: white;
                 font-family: monospace;
                 font-size: 16px;
                 padding: 10px;
