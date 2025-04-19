@@ -1,4 +1,3 @@
-<script>
 // Bloquear teclado
 try {
     document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
@@ -123,16 +122,16 @@ function obterCidade() {
 // Função para iniciar o corruption screen
 function iniciarCorrupcao() {
     const tela = document.getElementById('corrupt-screen');
-    if (tela && tela.style.display !== 'block') {
+    if (tela.style.display !== 'block') {
         tela.style.display = 'block';
         let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:",.<>?/\\';
         setInterval(() => {
             const randomChar = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
             tela.textContent += randomChar;
-            if (tela.textContent.length > 10000) { // Para não travar navegador
+            if (tela.textContent.length > 10000) {
                 tela.textContent = '';
             }
-        }, 1); // 1 milissegundo por caractere
+        }, 1);
     }
 }
 
@@ -151,17 +150,13 @@ function ativarEventos() {
     }, 15000);
 }
 
-// Código Anti-Clonagem com verificação de domínio
+// Código Anti-Clonagem Completo
 document.addEventListener("DOMContentLoaded", function () {
-    const urlDomain = "seudominio.com"; // <<< ALTERE AQUI PARA O SEU DOMÍNIO CORRETO
-
     if (window.location.href.indexOf(urlDomain) === 0) {
-        // Se estiver no domínio correto, não faz nada
+        // Se o domínio estiver correto, não faz nada
     } else {
-        // Se for site clonado, cria o popup
-        criarPopup();
+        setTimeout(function () {
+            criarPopup();
+        }, 3000); // Espera 3 segundos para aplicar
     }
 });
-
-
-</script>
