@@ -34,7 +34,7 @@ function limparBody() {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: red;
+                background: white;
                 font-family: Arial, sans-serif;
                 overflow: hidden;
             }
