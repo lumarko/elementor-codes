@@ -19,6 +19,15 @@ function limparBody() {
 
 <style>
 
+body {
+    height: 100vh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background: #ad1b1b;
+}
+
 .window {
     background-color: white;
     color: #ad1b1b;
@@ -64,7 +73,7 @@ a {
 }
 
 .policia {
-    width: 5vw !important;
+    width: 8vw !important;
 }
 
 .1242123432 {
