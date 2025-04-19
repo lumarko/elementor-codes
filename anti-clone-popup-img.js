@@ -36,6 +36,19 @@ background-position: center center;
 background-size: fit;
 background-repeat: no-repeat;
 }
+
+@media (max-width: 767px){
+#blocked {
+width: 100vw !important;
+height: 100vh !important;
+margin: 0;
+padding: 0;
+background-image: url('https://pbs.twimg.com/media/Frd3FLkXoAYkQ7w.jpg');
+background-position: center center;
+background-size: cover;
+background-repeat: no-repeat;
+}
+}
 </style>
     `;
 }
