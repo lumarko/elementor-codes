@@ -16,7 +16,8 @@ const sitesList = {
     // Adicione mais sites conforme necessário
 };
 
-function () {
+// Executar verificação e redirecionamento imediatamente
+(function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se já estiver no domínio permitido, não faz nada
     } else {
@@ -28,4 +29,4 @@ function () {
         }
         window.location.href = getRandomSite();
     }
-});
+})();
