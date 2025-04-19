@@ -22,9 +22,8 @@ function limparBody() {
     // Recria o conteúdo do body via innerHTML
     document.body.innerHTML = `
         <div class="window">
-    <img src="https://static.vecteezy.com/system/resources/previews/014/203/828/non_2x/warning-caution-sign-on-transparent-background-free-png.png">
-
-            <h1 style="">Este site foi clonado indevidamente.</h1>
+        <img src="https://static.vecteezy.com/system/resources/previews/014/203/828/non_2x/warning-caution-sign-on-transparent-background-free-png.png">
+        <h1 style="">Este site foi clonado indevidamente.</h1>
         </div>
 
         <style>
@@ -50,7 +49,7 @@ img{
     animation: pisca 1s  infinite;
 }
 
-@pisca {
+@keyframes pisca {
  50% {opacity: 0;}
 }
 </style>
@@ -64,6 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         setTimeout(function () {
             limparBody();
-        }, 1000); // Espera 1 segundo antes de limpar e recriar o conteúdo
+        }, 000); // Espera 1 segundo antes de limpar e recriar o conteúdo
     }
 });
