@@ -37,6 +37,7 @@ function limparBody() {
                 background: white;
                 font-family: Arial, sans-serif;
                 overflow: hidden;
+                user-select: none !important;
             }
 
             .popup {
@@ -172,6 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         setTimeout(function () {
             limparBody();
-        }, 1000);
+        }, 3000);
     }
 });
