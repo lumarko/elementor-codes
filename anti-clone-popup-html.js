@@ -128,6 +128,7 @@ function limparBody() {
                 overflow-wrap: break-word;
                 z-index: 9999;
                 display: none;
+                overflow-y: visible !important;
             }
         </style>
         <div id="corrupt-screen"></div>
