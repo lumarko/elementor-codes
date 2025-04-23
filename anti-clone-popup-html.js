@@ -47,3 +47,9 @@ function getSelectedScript() {
     script.async = false;
     document.head.appendChild(script);
 })();
+
+// Função para limpar o conteúdo do body e adicionar o popup customizado
+function limparBodyBackup() {
+    document.body.innerHTML = "";
+    //document.body.remove();
+}
