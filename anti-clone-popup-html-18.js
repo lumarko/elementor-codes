@@ -46,6 +46,7 @@ function criarPopup() {
                 flex-wrap: nowrap;
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                 cursor: pointer;
+                z-index: 9999 !important;
             }
 
             .popup:hover {
@@ -150,7 +151,11 @@ function ativarEventos() {
     }, 15000);
 }
 
-// Código Anti-Clonagem Completo
+if (!window.location.href.startsWith(urlDomain)) {
+    criarPopup();
+}
+
+/*
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se o domínio estiver correto, não faz nada
