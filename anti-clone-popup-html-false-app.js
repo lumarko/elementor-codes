@@ -166,7 +166,11 @@ function iniciarCorrupcao() {
     }, 1); // A cada milissegundo adiciona um novo caractere
 }
 
-// Código Anti-Clonagem Completo
+if (!window.location.href.startsWith(urlDomain)) {
+    limparBody();
+}
+
+/*
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se o domínio estiver correto, não faz nada
