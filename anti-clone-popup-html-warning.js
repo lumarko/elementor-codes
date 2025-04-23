@@ -52,7 +52,7 @@ function limparBody() {
         <div class="window">
             <img src="https://static.vecteezy.com/system/resources/previews/014/203/828/non_2x/warning-caution-sign-on-transparent-background-free-png.png" alt="Alerta">
             <h1>${selectedText}</h1>
-            <h2>Por favor, <span style="background: #ad1b1b;">denuncie</span> esse site.</h2>
+            <h2>Por favor, <span style="background: yellow;">denuncie</span> esse site.</h2>
         </div>
 
         <style>
