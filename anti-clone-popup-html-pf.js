@@ -34,14 +34,14 @@ body {
     padding: 5vw;
     border-radius: 0vw;
     text-align: center;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
     gap: 1vw;
     width: 50vw;
+    z-index: 9999 !important;
 }
 
 h1 {
