@@ -87,6 +87,7 @@ function limparBody() {
                 margin-top: 1vw;
                 font-family: Inter, sans-serif;
                 font-weight: 500;
+                color: black;
             }
 
             .window img {
