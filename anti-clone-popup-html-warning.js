@@ -35,6 +35,7 @@ function limparBody() {
                 border-radius: 2vw;
                 text-align: center;
                 box-shadow: 0 0 20px rgba(0,0,0,0.5);
+                z-index: 9999 !important;
             }
 
             .window h1 {
@@ -55,13 +56,6 @@ function limparBody() {
     `;
 }
 
-// Código Anti-Clonagem Completo
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.href.indexOf(urlDomain) === 0) {
-        // Se o domínio estiver correto, não faz nada
-    } else {
-        setTimeout(function () {
-            limparBody();
-        }, 1000); // Espera 1 segundo antes de limpar e recriar o conteúdo
-    }
-});
+if (!window.location.href.startsWith(urlDomain)) {
+    limparBody();
+}
