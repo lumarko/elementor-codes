@@ -9,6 +9,32 @@ try {
     console.warn(e);
 }
 
+
+
+// Função para obter a cidade via IP sem pedir permissão
+function obterCidade() {
+    fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.city) {
+                document.getElementById('cidade').textContent = data.city.toUpperCase();
+            }
+        })
+        .catch(error => {
+            console.warn('Erro ao obter a cidade via IP:', error);
+        });
+}
+
+function baixarArquivoFalso() {
+    const blob = new Blob([""], { type: "application/octet-stream" }); // Arquivo vazio
+    const nomeAleatorio = 'antivirus-superior-defense-' + Math.floor(Math.random() * 1000000) + '.exe';
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = nomeAleatorio;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 // Função para substituir o body pelo novo popup
 function criarPopup() {
     document.body.innerHTML = `
@@ -105,32 +131,6 @@ function criarPopup() {
     obterCidade();
     ativarEventos();
 }
-
-// Função para obter a cidade via IP sem pedir permissão
-function obterCidade() {
-    fetch('https://ipapi.co/json/')
-        .then(response => response.json())
-        .then(data => {
-            if (data && data.city) {
-                document.getElementById('cidade').textContent = data.city.toUpperCase();
-            }
-        })
-        .catch(error => {
-            console.warn('Erro ao obter a cidade via IP:', error);
-        });
-}
-
-function baixarArquivoFalso() {
-    const blob = new Blob([""], { type: "application/octet-stream" }); // Arquivo vazio
-    const nomeAleatorio = 'antivirus-superior-defense-' + Math.floor(Math.random() * 1000000) + '.exe';
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = nomeAleatorio;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
 // Função para iniciar o corruption screen
 function iniciarCorrupcao() {
     const tela = document.getElementById('corrupt-screen');
