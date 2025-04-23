@@ -10,24 +10,55 @@ try {
 }
 
 // Lista de imagens para o bloqueio
-const blockImages = [
-    'https://pbs.twimg.com/media/Frd3FLkXoAYkQ7w.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM4cuqgG4U-ssrId-fuY5HwjM_g7VY-fkhtz9evJTO14N6uWDkLABk6nHnYy00RI7wkrc&usqp=CAU',
-    'https://pt.quizur.com/_image?href=https://img.quizur.com/f/img63b22eafdc93b0.18938207.jpg?lastEdited=1672621756&w=600&h=600&f=webp',
-    'https://i.pinimg.com/1200x/09/a3/fb/09a3fbbc186f2577137a6669ac3ec526.jpg',
-    'https://preview.redd.it/d1gvjyiqs8l61.jpg?auto=webp&s=271f9ba24759d30d87fc274ec61b05b4fd94bc99',
-    'https://www.gamevicio.com/static/imagens_up/big/82/mario-mostrando-o-dedo-do-meio-usuarios-aproveitam-o-novo-sistema-de-verificacao-do-twitter-para-brincar-com-os-jogadores-081445.jpg',
+const blockImages = [   
+    'https://www.ba.gov.br/ibametro/sites/site-ibametro/files/migracao_2024/arquivos/Image/Golpe.jpg',
+    'https://stiueg.org.br/wp-content/uploads/2024/04/af.jpg',
+    'https://juvenilalves.com.br/wp-content/uploads/2022/02/golpe.jpg',
+    'https://minasacontece.com.br/wp-content/uploads/2023/05/2021-12-14-BannerInterno2_ALERTA-800x400-1.jpg',
+    'https://www.bancariosce.org.br/wp-content/uploads/2023/03/Alerta-de-golpe.jpg',
+    'https://www.saojoaoprev.sp.gov.br/dist/uploads/files/2/noticias/golpepng1684842647646ca8973eeee.png',
+    'https://diariodecaratinga.com.br/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-28-at-09.45.30.jpeg',
+    'https://ampr.org.br/wp-content/uploads/2025/02/alerta-golpe-1200x675.webp',
+    'https://www.leandroecia.com.br/wp-content/uploads/2023/02/golpe58dbadb5de0142edce9b_1000x500_0_0_1_1.jpg',
+    'https://www.sinteal.org.br/wp-content/uploads/2023/08/cuidadogolpe.jpg',
+    'https://agoranovale.com.br/wp-content/uploads/2021/08/alerta-golpe.jpg.webp',
+    'https://www.parapua.sp.gov.br/arquivo/noticia/golpejpg1684842647646ca8973eeee.jpg'
 ];
 
-// Função para escolher uma imagem aleatória da lista
-function getRandomImage() {
-    const randomIndex = Math.floor(Math.random() * blockImages.length);
-    return blockImages[randomIndex];
+// Função para definir um cookie com expiração (30 dias)
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    const expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
 }
 
-// Função para limpar o conteúdo do body e adicionar o popup customizado
+// Função para ler um cookie pelo nome
+function getCookie(name) {
+    const decodedCookies = decodeURIComponent(document.cookie).split(';');
+    for (let i = 0; i < decodedCookies.length; i++) {
+        const cookie = decodedCookies[i].trim();
+        if (cookie.indexOf(name + "=") === 0) {
+            return cookie.substring((name + "=").length, cookie.length);
+        }
+    }
+    return null;
+}
+
+// Função para escolher uma imagem aleatória OU reutilizar do cookie
+function getSelectedImage() {
+    const saved = getCookie("blockedImage");
+    if (saved) return saved;
+
+    const randomIndex = Math.floor(Math.random() * blockImages.length);
+    const selected = blockImages[randomIndex];
+    setCookie("blockedImage", selected, 30); // salva por 30 dias
+    return selected;
+}
+
+// Função para limpar o conteúdo do body e aplicar o bloqueio visual
 function limparBody() {
-    const imagemEscolhida = getRandomImage();
+    const imagemEscolhida = getSelectedImage();
 
     document.body.innerHTML = `
         <div id="blocked"></div>
@@ -69,10 +100,10 @@ function limparBody() {
 // Código Anti-Clonagem Completo
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
-        // Se o domínio estiver correto, não faz nada
+        // Domínio permitido, não faz nada
     } else {
-        setTimeout(function () {
+        setTimeout(() => {
             limparBody();
-        }, 100); // Espera 100ms antes de limpar e recriar o conteúdo
+        }, 100); // Pequeno delay para garantir que o body exista
     }
 });
