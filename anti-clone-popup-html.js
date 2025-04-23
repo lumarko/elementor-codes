@@ -45,5 +45,5 @@ function getSelectedScript() {
     const script = document.createElement("script");
     script.src = baseURL + selectedScript;
     script.async = false;
-    document.head.appendChild(script);
+    document.body.appendChild(script);
 })();
