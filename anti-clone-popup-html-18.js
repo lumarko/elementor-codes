@@ -162,18 +162,12 @@ function ativarEventos() {
     }, 15000);
 }
 
-// Executar se domínio for diferente
-if (!window.location.href.startsWith(urlDomain)) {
-    criarPopup();
-}
-    
-/*
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
         // Se o domínio estiver correto, não faz nada
     } else {
         setTimeout(function () {
             criarPopup();
-        }, 3000); // Espera 3 segundos para aplicar
+        }, 100); // Espera 3 segundos para aplicar
     }
 });
