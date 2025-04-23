@@ -168,12 +168,7 @@ function ativarEventos() {
 if (!window.location.href.startsWith(urlDomain)) {
     criarPopup();
 }
-</script>
-
-if (!window.location.href.startsWith(urlDomain)) {
-    criarPopup();
-}
-
+    
 /*
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.href.indexOf(urlDomain) === 0) {
